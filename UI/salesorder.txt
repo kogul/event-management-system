@@ -1,0 +1,156 @@
+﻿create table employee(
+emp_id int,
+firstname varchar(20),
+lastname varchar(20),
+desig string,
+phone int,
+address string,
+CONSTRAINT pk3 PRIMARY KEY (emp_id)
+
+
+);
+
+
+create table products(
+prod_id int,
+prodname string,
+price int,
+quantity int,
+emp_id int,
+CONSTRAINT pk2 PRIMARY KEY (prod_id),
+CONSTRAINT fk1 FOREIGN KEY (emp_id)
+    REFERENCES employee(emp_id)
+);
+
+
+create table customer(
+cust_id int,
+firstname varchar(20),
+lastname varchar(20),
+doorno string,
+st_name varchar(30),
+city varchar(20),
+prod_id int,
+CONSTRAINT pk1 PRIMARY KEY (cust_id),
+CONSTRAINT fk1 FOREIGN KEY (prod_id)
+    REFERENCES products(prod_id)
+);
+
+
+create table cphoneNo 
+(cust_id number, 
+phoneNo number, 
+foreign key(cust_id) references customer(cust_id));
+
+
+
+
+
+
+
+
+create table orders(
+order_id int,
+prod_id int,
+cust_id int,
+emp_id int,
+tot_amount decimal,
+delivery_date string,
+CONSTRAINT pk4 PRIMARY KEY (order_id),
+CONSTRAINT fk2 FOREIGN KEY (cust_id)
+    REFERENCES customer(cust_id),
+CONSTRAINT fk3 FOREIGN KEY (prod_id)
+    REFERENCES products(prod_id), 
+CONSTRAINT fk4 FOREIGN KEY (emp_id)
+    REFERENCES employee(emp_id)   
+);
+insert into employee values(0001, 'Aakash', 'Krishna', 'Manager',9944580867, 'Ondipudur Coimbatore');
+insert into employee values(0002, 'Rameshwar', 'J', 'Janitir',9944580812, 'Ganapathy Coimbatore' );
+insert into employee values(0003, 'Sai Kaushik', 'Sabarirajan', 'Cashier',9944580847, 'Ondipudur Coimbatore');
+insert into employee values(0004, 'Sourav', 'Krishna', 'Errand Boy',9944584867, 'Streets' );
+insert into employee values(0005, 'Petyr', 'Baelish', 'Errand Boy',9944580267, 'Ramanathapuram Coimbatore');
+insert into employee values(0006, 'Missandei', 'Naath', 'Errand Boy',9934580867, 'Nungambakkam Coimbatore' );
+insert into employee values(0007, 'Jon', 'Snow', 'Errand Boy',9944580847, 'Bessanager Chennai');
+insert into employee values(0008, 'Robb', 'Stark', 'Errand Boy',9924580867, 'Irugur Coimbatore' );
+insert into employee values(0009, 'Varys', 'Pentos', 'Errand Boy',9964580867, 'Gantok Nepal');
+insert into employee values(0010, 'Cerci', 'Lannister', 'Errand Boy',9644580867, 'Dubai Main Road Trichy' );
+
+
+insert into products values(101, 'Dark Fantasy', 30, 300,0001);
+insert into products values(102, 'Mixie', 500, 20,0004);
+insert into products values(103, 'Garnier Shampoo', 90, 50,0006);
+insert into products values(104, 'Hervamatin Amazon', 50, 60,0005);
+insert into products values(105, 'Parle G', 30, 100,0008);
+insert into products values(106, 'Pears Soap', 50, 100,0010);
+insert into products values(107, 'Good Day', 30, 100,0002);
+insert into products values(108, 'Toothpaste', 50, 70,0007);
+insert into products values(109, 'Pen', 10, 100,0009);
+insert into products values(110, 'Notebook', 30, 100,0004);
+
+
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1001, 'Tom B', 'Erichsen', 'E21', 'Estantia','Banglore',101);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1002, 'Sathya', 'Swaruban', '19', 'Sivanandhapuram','Coimbatore',103);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1003, 'Kaushik', 'Sabarirajan', 'E25', 'Zen Gardens','Chennai',103);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1004, 'Kogul', 'Karna', '07', 'Irugur','Coimbatore',106);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1005, 'Aakash', 'Sasikumar', 'A21', 'KTVR Global','Guruvayur',109);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1006, 'Revathy', 'Nambiar', '12', 'Nazereth','Kochin',101);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1007, 'Saumya', 'Rai', '31', 'East Sector','Delhi',105);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1008, 'Kabilan', 'Sivaprakash', '23', 'Nilambur','Chennai',110);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1009, 'Mukund', 'Wudali', 'E24', 'Estantia','Chennai',107);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1010, 'Shantam', 'Bhuraria', '25', 'Nightswatch','Varanasi',106);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1011, 'Sourav', 'Ravikumar', 'N21', 'Estantia','Chennai',102);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1012, 'Sourav', 'Ravikumar', '23', 'Thillainagar','Trichy',108);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1013, 'Abinanth', 'Chakravarthy', '21', 'Medows','Mumbai',106);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1014, 'Aaryan', 'Narghis', 'W21', 'Estantia','Kolkata',101);
+INSERT INTO customer (cust_id, firstname, lastname, doorno, st_name, city,prod_id)
+VALUES (1015, 'Rhegar', 'Targaryan', 'E21', 'Kingslanding','Westeroes'108);
+
+
+insert into cphoneNo values(001, 6487529874);
+insert into cphoneNo values(001, 8123476322);
+insert into cphoneNo values(002, 1234752392);
+insert into cphoneNo values(003, 0989387239);
+insert into cphoneNo values(004, 0928439203);
+insert into cphoneNo values(005, 9894392403);
+insert into cphoneNo values(006, 2343234543);
+insert into cphoneNo values(007, 8786468454);
+insert into cphoneNo values(009, 7668765484);
+insert into cphoneNo values(009, 9785465465);
+insert into cphoneNo values(010, 8785468486);
+insert into cphoneNo values(011, 8765466554);
+insert into cphoneNo values(012, 9876546567);
+insert into cphoneNo values(013, 0928340938);
+insert into cphoneNo values(014, 0980938948);
+insert into cphoneNo values(015, 9875465455);
+insert into cphoneNo values(008, 9387488848);
+
+
+insert into orders values('ORD001', 101, 1001,0001,200.0, '11-08-2017');
+insert into orders values('ORD002', 103, 1002,0006,150.0, '11-08-2017');
+insert into orders values('ORD003', 106, 1010,0010,100,0,'11-08-2017');
+insert into orders values('ORD004', 106, 1013,0010,100.0,'11-08-2017');
+insert into orders values('ORD005', 108, 1012,0007,430.0, '11-08-2017');
+insert into orders values('ORD006', 108, 1015,0007,430.0,'11-08-2017');
+insert into orders values('ORD007', 101, 1014,0001,200.0, '11-08-2017');
+insert into orders values('ORD008', 103, 1003,0006,150.0, '11-08-2017');
+insert into orders values('ORD009', 106, 1004,0010,100.0, '11-08-2017');
+insert into orders values('ORD0010', 110, 1008,0004,200.0,'11-08-2017');
+insert into orders values('ORD0011', 101, 1006,0001,200.0, '11-08-2017');
+insert into orders values('ORD0012', 102, 1011,0004,150.0, '11-08-2017');
+insert into orders values('ORD0013', 105, 1007,0008,600.0,'11-08-2017');
+insert into orders values('ORD0014', 107, 1009,0002,900.0,'11-08-2017');
+insert into orders values('ORD0015', 109, 1005,0009,1000.0,'11-08-2017');
