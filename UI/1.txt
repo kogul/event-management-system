@@ -1,1 +1,0 @@
-background-image: url("http://themes.wplook.com/conference/wp-content/uploads/sites/9/2014/10/header_bg.jpg"); background-position: 50% -25px;

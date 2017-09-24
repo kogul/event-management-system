@@ -8,8 +8,9 @@
     letter-spacing: 4px;
     border-radius: 0;
     padding: 1%;
-
 }
+
+
 .navbar-brand{
 
 }
@@ -22,7 +23,7 @@
 
     background:rgba(0,0,0,0.8);
 }
-.navbar-nav li.active a{
+.navbar-nav li.active a.{
   background-color: rgba(0, 0, 0, 0.8);
   color: #f4511e;
 }
@@ -97,6 +98,7 @@ clip-path: polygon(19% 28%, 100% 22%, 83% 67%, 0 73%);
 }
 .logoimg{
   padding-left: 35%;
+  padding-top: 3%;
   width: 60%;
 
 }
@@ -120,7 +122,7 @@ clip-path: polygon(19% 28%, 100% 22%, 83% 67%, 0 73%);
 
 }
 .thumbnail img{
-  padding: 10%;
+  padding: 5%;
 
   border-radius: 50%;
 }
@@ -133,7 +135,7 @@ clip-path: polygon(19% 28%, 100% 22%, 83% 67%, 0 73%);
 }
 .fa {
   padding: 15px;
-    font-size: 50px;
+    font-size: 2em;
     width: 30%;
     text-align: center;
     text-decoration: none;
@@ -148,9 +150,12 @@ clip-path: polygon(19% 28%, 100% 22%, 83% 67%, 0 73%);
   background: #e5e5e5;
 }
 .othead{
-  padding-left: 5%;
-  padding-bottom:  1%;
+  padding-left: 3%;
+  padding-bottom:  3%;
   font-size: 50px;
   font-family: 'Lato', sans-serif;
   color: black;
+}
+.input3{
+  color: red;
 }

@@ -32,7 +32,7 @@
     </div>
     <div class="collapse navbar-collapse shift" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#myPage">HOME</a></li>
+        <li><a href="#mybody">HOME</a></li>
         <li><a href="#aboutus">ABOUT US</a></li>
         <li><a href="#contact">CONTACT</a></li>
         <li><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</a></li>
@@ -51,16 +51,16 @@
    </div>
    <div class="mySlides fade">
      <img src="2.jpg" style="width:100%;height:550px">
-     <h2 class="caption cp2"> Present</h2>
+     <h2 class="caption cp2"> Organize</h2>
 
    </div>
    <div class="mySlides fade">
      <img  src="5.jpg" style="width:100%;height:550px">
-     <h2 class="caption cp3"> Organize </h2>
+     <h2 class="caption cp3"> Volunteer </h2>
    </div>
    <div class="mySlides fade">
      <img  src="15.jpg" style="width:100%;height:550px">
-     <h2 class="caption cp4"> Speak</h2>
+     <h2 class="caption cp4"> Present</h2>
    </div>
 
 
@@ -68,7 +68,7 @@
 </div>
 
 <div class="logo">
-  <img class="logoimg " src="t1.png">
+  <img class="logoimg " src="t2.png">
 </div>
 
 <div class="aboutus">
@@ -171,7 +171,8 @@
      </div>
 
    </div>
- </div><br>
+ </div>
+ </div>
 
 
 
@@ -197,43 +198,76 @@ $(document).ready(function(){
   $(window).scroll(function(){
   	var scroll = $(window).scrollTop();
 	  if (scroll > 100) {
-	    $(".navbar").css("background" , "rgba(0,0,0,0.7)");
+	    $(".navbar").css("background" , "rgba(0,0,0,0.9)");
+      $(".navbar").css("padding" , "0%");
+
 	  }
 
 	  else{
 		  $(".navbar").css("background" , "rgba(0,0,0,0)");
+
 	  }
   })
 })
 </script>
 <div id="id01" class="modal">
 
-  <form class="modal-content animate" >
+  <form class="modal-content animate" onsubmit="validateForm()" >
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="img_avatar.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
-    <div class="col-xs-6">
       <label class="u1"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" class="input" required>
-    </div>
-    <div class="col-xs-6">
+      <input type="text" placeholder="Enter Username" name="uname" id="input1" required>
+
       <label class="u2"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" class="input" required>
-    </div>
+      <input type="password" placeholder="Enter Password" name="pass" id="input2" required>
+      <p id="input3" style="display:none">Wrong Username or Password</p>
 
       <input type="checkbox" checked="checked" class="rmb"> Remember me
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button  onclick="validateForm()" class="loginbtn">Sign In</button>
+      <button  class="loginbtn">Sign In</button>
+      <span><div  class="signupbtn" style="background-color:#e53935" onclick="openresponce()">Sign up</div></span>
+
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form>
 </div>
+<div id="id02" class="modal id02">
 
+  <form class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="img_avatar.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+
+      <input type="text" placeholder=" Name" name="uname" id="input3" required>
+      <br>
+      <input type="number" placeholder="Phone Number" name="psw" id="input4" required>
+      <br>
+      <input type="email" placeholder="Email Address" name="psw" id="input5" required>
+      <br>
+      <input type="date" placeholder="Date of Birth" name="psw" id="input6" required>
+      <br>
+      <input type="password" placeholder="Password" name="psw" id="input7" required>
+      <br>
+      <input type="password" placeholder="Confirm Password" name="psw" id="input8" required><span ><i class="display:none" id="wrongpass" class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button  class="signupbtn" style="background-color:#e53935;float:left;width:80%;margin-left:8%;" onclick="validateresponce()">CREATE ACCOUNT</button>
+
+    </div>
+  </form>
+</div>
 <script>
 
 var modal = document.getElementById('id01');
@@ -248,10 +282,33 @@ window.onclick = function(event) {
 <script>
 
  function validateForm() {
-    var x = document.getElementsByClassName("input1").value;
-    if (x != "dbms@gmail.com") {
-        alert("Wrong Username or Password");
-        return false;
+    var x = document.getElementById("input1").value;
+    var y = document.getElementById("input2").value;
+    if (x == "admin" && y== "admin") {
+        window.open("admin.html")
+
     }
+    else{
+      alert("Wrong Username or Password")
+    }
+}
+function register(){
+  window.location.hash = register;
+}
+function validateresponce() {
+  var x = document.getElementById("input7").value;
+  var y = document.getElementById("input8").value;
+  if (x==y && x!="" && y!="") {
+      window.open("admin.html");
+
+  }
+  else{
+    alert("Passwords don't match");
+    document.getElementById("id02").style.display="block";
+  }
+}
+function openresponce(){
+  document.getElementById("id01").style.display="none";
+  document.getElementById("id02").style.display="block";
 }
 </script>

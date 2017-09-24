@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Event Management System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+  <script src="admin.js"></script>
+</head>
+<body style="background:#ecf0f1;">
+  <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9932;</a>
+  <img class="img_container" src="img_avatar.png">
+  <a href="#" onclick="home()">HOME</a>
+  <a href="#" onclick="profile()">PROFILE</a>
+
+  <a href="#" onclick="create_event()">CREATE EVENT</a>
+  <a href="#">CONTACT</a>
+  <a href="project.html">LOG OUT</a>
+</div>
+
+<div id="main">
+  <nav class="navbar navbar-default  " style="color:white">
+   <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+     </div>
+     <div class="collapse navbar-collapse shift" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><span style="font-size:30px;cursor:pointer" onclick="openNav()" onclick="closeNav()" class="selector">&#9776;</span></li>
+        <li><a class="mainheader" id="mainheader" style="margin-left:10px;color:#7b1fa2 ">DASHBOARD</a></li>
+         <a class="navbar-brand" rel="home" href="#">
+         <img class="dashboard_logo"style="max-width:200px; margin-top: -23px;margin-left:130%;"src="t2.png">
+         </a>
+        </ul>
+      </div>
+      </div>
+   </nav>
+
+  <div class="events container" id="events">
+   <h2 class="eventheader text-center" style="font-family: 'Lato', sans-serif;">EVENTS</h2><input id="search" type="text" style="width:20%; " name="search" placeholder="Search..">
+   <hr>
+
+    <div class="row text-center">
+      <div class="col-sm-4">
+        <div class="event1">
+          <img class="eventimage" src="id1.jpeg">
+           <div class="eventjoin">
+            <h class="text" style="font-family: 'Lato', sans-serif;"> JOIN </h>
+          </div>
+         </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="event1">
+          <img class="eventimage" src="ml1.jpg">
+           <div class="eventjoin">
+            <h class="text" style="font-family: 'Lato', sans-serif;"> JOIN </h>
+          </div>
+          </div>
+        </div>
+       <div class="col-sm-4">
+          <div class="event1">
+            <img class="eventimage" src="cs1.jpg">
+             <div class="eventjoin">
+
+              <h class="text" style="font-family: 'Lato', sans-serif;"> JOIN </h>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="event1">
+            <img class="eventimage" src="sh2.jpg">
+             <div class="eventjoin">
+              <h class="text" style="font-family: 'Lato', sans-serif;"> JOIN </h>
+             </div>
+           </div>
+         </div>
+        <div class="col-sm-4">
+          <div class="event1">
+            <img class="eventimage" src="id2.jpg">
+              <div class="eventjoin">
+                <h class="text" style="font-family: 'Lato', sans-serif;"> JOIN </h>
+              </div>
+           </div>
+          </div>
+         <div class="col-sm-4">
+            <div class="event1">
+              <img class="eventimage" src="cp1.jpg">
+                <div class="eventjoin">
+                 <h class="text" style="font-family: 'Lato', sans-serif;"> JOIN </h>
+                </div>
+              </div>
+          </div>
+         </div>
+    </div>
+
+   <div class="container user_profile " id="user_profile" style="display:none">
+     <h></h>
+      <div class="row">
+        <div class="col-sm-4 profile">
+          <div class="profile_picture">
+            <img src="img_avatar.png"><span class="user_name"><h class="nametag">Jane Doe</h><i class="fa fa-pencil-square-o icon1" style="font-size:20px;" aria-hidden="true"></i></span>
+          </div>
+          <div class="user_details">
+            <div class="user_ph">
+              <h4 class="desc" style="font-family: 'Lato', sans-serif;">Phone No:</h4>
+              <span><textarea rows=1 class="number" style="outline:none;resize:none;border:1px solid white;">9944580867</textarea><i class="fa fa-pencil-square-o icon1" id="icon_ph" onclick="ph_change()" style="font-size:20px;" aria-hidden="true"></i><i class="fa fa-plus icon2"  style="font-size:20px;" aria-hidden="true"></i></span>
+            </div>
+
+           <div class="user_ph">
+            <h4 class="desc" style="font-family: 'Lato', sans-serif;" style="padding-bottom:1%;">Email Id:</h4>
+            <span><h style="padding:3%;" class="number">janedoe@eventivation.com</h><span>
+           </div>
+          <br>
+
+           <div class="user_addr" style="font-family: 'Lato', sans-serif;">
+            <h4 class="desc">Address:</h4>
+            <textarea class="addr" cols=5 rows=3 style="outline:none;resize:none;border:1px solid white;">No 24, KTVR Gardens,Ganapathy,Coimbatore</textarea><span><i class="fa fa-pencil-square-o icon1" style="font-size:20px;" aria-hidden="true"></i></span>
+           </div>
+         </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+           <div class="col-sm-9">
+           <div class="bio">
+            <h3 class="text-center" style="font-family: 'Lato', sans-serif;">Bio</h3>
+             <hr >
+             <textarea class="biotext"  cols="80" rows="4"></textarea>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="extra">
+              <span><h2 class="changepass">Change Password</h2></span>
+              <span><h2 class="account_settings">Account Settings</h2></span>
+              <span><h2 class="account_settings">Report Issues</h2></span>
+              <span><h2 class="account_settings">Your Events</h2></span>
+            </div>
+          </div>
+        </div>
+
+          <div class="bio">
+           <h3 class="text-center" style="font-family: 'Lato', sans-serif;">Messages</h3>
+            <hr>
+            <textarea class="biotext"  cols="60" rows="7"></textarea>
+
+         </div>
+
+       </div>
+     </div>
+   </div>
+
+  <div class="create_event" id="create_event" style="display:none;">
+    <div class="container ">
+      <div class="event_select dropdown" >
+        <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Create Event
+         <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+             <li role="presentation"><a role="menuitem" onclick="public()" tabindex="-1" href="#">Public Event</a></li>
+             <li role="presentation"><a role="menuitem" onclick="private()" tabindex="-1" href="#">Private Event</a></li>
+            </ul>
+       </div>
+        <div class="public_event" id="public" style="display:none">
+          <div>
+            <h3 class="text-center">Public Event</h3>
+            <hr>
+            <h4 class="event_input_head">Event Photo</h4>
+            <input type="file" accept="image/*" display="inline-block">
+            <h4 class="event_input_head">Event Name</h4>
+            <input type="text" placeholder="Enter a short,clear name">
+            <h4 class="event_input_head">Event Date</h4>
+            <input type="date">
+            <h4 class="event_input_head">Event Time</h4>
+            <input type="time">
+            <h4 class="event_input_head">Event Location</h4>
+            <input type="text">
+            <br>
+
+
+          </div>
+        </div>
+        <div class="private_event" id="private"style="display:none">
+          <div>
+            <h3 class="text-center">Private Event</h3>
+            <hr>
+            <h4 class="event_input_head">Event Photo</h4>
+            <input type="file" accept="image/*" display="inline-block">
+            <h4 class="event_input_head">Event Name</h4>
+            <input type="text" placeholder="Enter a short,clear name">
+            <h4 class="event_input_head">Event Date</h4>
+            <input type="date">
+            <h4 class="event_input_head">Event Time</h4>
+            <input type="time">
+            <h4 class="event_input_head">Event Location</h4>
+            <input type="text">
+            <h4 class="event_input_head">Accomodation</h4>
+            <input type="number" placeholder="Number of Seats">
+            <br>
+          </div>
+        </div>
+    </div>
+  </div>
+  
+</div>
