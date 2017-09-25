@@ -1,5 +1,5 @@
 <div class="logo">
-    <img class="logoimg " src="<?php  echo base_url().'application/assets/images/t1.png';?>">
+    <img class="logoimg " src="<?php  echo base_url().'application/assets/images/t2.png';?>">
 </div>
 
 <div class="aboutus">

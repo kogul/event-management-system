@@ -1,6 +1,6 @@
 
 var myIndex = 0;
-carousel();
+$(document).ready(carousel);
 
 function carousel() {
     var i;
@@ -32,4 +32,9 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+}
+
+function openresponce(){
+    document.getElementById("id01").style.display="none";
+    document.getElementById("id02").style.display="block";
 }

@@ -23,4 +23,3 @@
 
 
 </div>
-<script>carousel();</script>
