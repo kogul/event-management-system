@@ -43,3 +43,20 @@ function private(){
   document.getElementById("public").style.display="none";
   document.getElementById("private").style.display="block";
 }
+function readURL(input) {
+        if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                   $('#blah')
+                       .attr('src', e.target.result);
+               };
+
+               reader.readAsDataURL(input.files[0]);
+      }
+}
+function invokesnack() {
+    var x = document.getElementById("snackbar")
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
