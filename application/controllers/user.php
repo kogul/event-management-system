@@ -54,19 +54,31 @@ class user extends CI_Controller{
     function create(){
         $target = '/event-management-system/application/Assets/Images/';
         $this->load->model('events');
+        $this->load->model('users');
         if($_POST){
            $name = $this->input->post('event_name',true);
            $date = $this->input->post('event_date',true);
            $location = $this->input->post('location',true);
            $category = $this->input->post('category');
-           $tmp_img = $_FILES['event_pic']['tmp_name'];
+            $time = $this->input->post('event_time',true);
+            $max_part = $this->input->post('max_acc',true);
+            $phone = $this->input->post('o_phone',true);
+            $entry_fee = $this->input->post('entry_fee',true);
+            $org_id = $this->users->orgData($this->session->userdata('u_id'));
+            $tmp_img = $_FILES['event_pic']['tmp_name'];
            $img = $_FILES['event_pic']['name'];
+           echo $org_id['o_id'];
            $edata =array(
                'name' => $name,
                'picture' => $img,
                'location_id' => $location,
                'category' => $category,
-               'date' => $date
+               'date' => $date,
+               'e_time'=>$time,
+               'max_partic'=>$max_part,
+               'o_id'=>$org_id['o_id'],
+               'fees'=>$entry_fee,
+               'o_phone'=>$phone
            );
            $this->events->create($edata);
            header('Location: /user/dashboard');

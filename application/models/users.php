@@ -29,9 +29,15 @@ class users extends CI_Model{
         $this->db->select('*');
         $this->db->where('u_id',$uid);
         $res = $this->db->get('Phone');
-        return $res->row_array();
+        return $res->result();
     }
     function insertOrg($odata){
         $this->db->insert('Organiser',$odata);
+    }
+    function orgData($uid){
+        $this->db->select('*');
+        $this->db->where('u_id',$uid);
+        $res = $this->db->get('Organiser');
+        return $res->row_array();
     }
 }

@@ -1,13 +1,12 @@
 
-#id02 input[type=text], input[type=password], input[type=number],input[type=date],input[type=email]{
+#id02 input[type=text], input[type=password], input[type=number],input[type=date],input[type=email] {
   width: 60%;
   padding: 12px 20px;
   border: 1px solid #ccc;
   box-sizing: border-box;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-family: 'Lato', sans-serif;
-  border-radius: 2%;
+
 }
 
 
@@ -23,14 +22,13 @@
     box-sizing: border-box;
     margin-top: 2%;
     margin-bottom: 2%;
-    border-radius: 2%;
+
     left: 0px;
-    font-family: 'Lato', sans-serif;
 }
 
 
 button {
-
+    background-color: rgba(0,0,0,0);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -49,7 +47,7 @@ button:hover {
 .loginbtn {
     width: auto;
     float: left;
-    background-color: #00BFA5;
+    background-color: #283593;
 
 }
 .signupbtn{
@@ -66,8 +64,6 @@ button:hover {
   float: left;
   text-decoration: none;
   color: white;
-    background-color: #00BFA5;
-
 }
 .signupbtn:hover , .signupbtn:active ,.signupbtn::after{
   text-decoration: none;
@@ -80,7 +76,7 @@ button:hover {
 }
 
 img.avatar {
-    width: 15%;
+    width: 20%;
     border-radius: 50%;
 }
 
@@ -105,7 +101,7 @@ span.psw {
     height: 100%;
     overflow:auto;
     background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.4);
     padding-top: 60px;
 }
 
@@ -146,14 +142,13 @@ span.psw {
     right: 25px;
     top: 0;
     color: #000;
-    font-size: 20px;
+    font-size: 35px;
     font-weight: bold;
-    padding-top:10px;
 }
 
 .close:hover,
 .close:focus {
-    color: #D50000;
+    color: #ce1616;
     cursor: pointer;
 }
 
@@ -187,6 +182,6 @@ span.psw {
   padding-right: 1%;
 
 }
-.proceed{
-  background: white;
+.rmb{
+
 }
