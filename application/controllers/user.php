@@ -44,9 +44,13 @@ class user extends CI_Controller{
     function dashboard(){
         $this->load->model('users');
         $this->load->model('events');
+        $allPart = $this->events->allPart($this->session->userdata('u_id'));
+        $data['allPart'] = $allPart;
         $data['phone'] = $this->users->getPhone($this->session->userdata('u_id'));
         $data['udata'] = $this->session->userdata();
         $data['events'] = $this->events->fetch();
+        $org_id = $this->users->orgData($this->session->userdata('u_id'));
+        $data['pvtEvents'] = $this->events->fetchPvt($org_id['o_id']);
         $data['locations'] = $this->users->getlocation();
          $this->load->view('dashboard_header');
          $this->load->view('dashboard',$data);
@@ -151,6 +155,91 @@ class user extends CI_Controller{
                  </script>";
             }
         }
+    }
+    function regEvent(){
+        $this->load->model('users');
+        $this->load->model('events');
+        $e_id =  $this->input->get('eid');
+        $u_id = $this->session->userdata('u_id');
+        $check = $this->events->fetchPart($e_id,$u_id);
+        if(empty($check)) {
+            $event = $this->events->fetchEvent($e_id);
+            $data = array(
+                'name' => $event['name'],
+                'bill' => $event['fees'],
+                'u_id' => $u_id,
+                'e_id' => $e_id
+            );
+            $this->events->insertPart($data);
+            $allPart = $this->events->allPart($this->session->userdata('u_id'));
+            $data['allPart'] = $allPart;
+            $data['phone'] = $this->users->getPhone($this->session->userdata('u_id'));
+            $data['udata'] = $this->session->userdata();
+            $data['events'] = $this->events->fetch();
+            $org_id = $this->users->orgData($this->session->userdata('u_id'));
+            $data['pvtEvents'] = $this->events->fetchPvt($org_id['o_id']);
+            $data['locations'] = $this->users->getlocation();
+            $this->load->view('dashboard_header');
+            $this->load->view('dashboard',$data);
+            echo "<script>alert('Registered Successfully');</script>";
+        }else{
+            $allPart = $this->events->allPart($this->session->userdata('u_id'));
+            $data['allPart'] = $allPart;
+            $data['phone'] = $this->users->getPhone($this->session->userdata('u_id'));
+            $data['udata'] = $this->session->userdata();
+            $data['events'] = $this->events->fetch();
+            $org_id = $this->users->orgData($this->session->userdata('u_id'));
+            $data['pvtEvents'] = $this->events->fetchPvt($org_id['o_id']);
+            $data['locations'] = $this->users->getlocation();
+            $this->load->view('dashboard_header');
+            $this->load->view('dashboard',$data);
+            echo "<script>alert('You have registered for this event already');</script>";
+        }
+    }
+    function remove(){
+            $e_id = $this->input->get('eid');
+            $u_id = $this->session->userdata('u_id');
+            $this->load->model('events');
+            $this->events->unPart($u_id,$e_id);
+            echo "<script>alert('You have opted out of the event successfully');</script>";
+            header('Location: /user/dashboard');
+    }
+    function delEvent(){
+            $this->load->model('users');
+            $this->load->model('events');
+            $e_id = $this->input->get('eid');
+            $org_id = $this->users->orgData($this->session->userdata('u_id'));
+            $this->events->deleteEvent($org_id['o_id'],$e_id);
+            header('Location: /user/dashboard');
+    }
+    function invite(){
+        $mailTo = $this->input->get('email');
+        $e_id = $this->input->get('e_id');
+        $this->load->model('events');
+        $event = $this->events->fetchEvent($e_id);
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'coder30597@gmail.com', // change it to yours
+            'smtp_pass' => 'swagmeansitsme', // change it to yours
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1',
+            'wordwrap' => TRUE
+        );
+        $msg = "<p>Hi there,</p><p>You have been invited to ".$event['name']." </p><p>Reach ".$event['location_id']." on ".$event['date']." at ".$event['e_time'].". ".$this->session->userdata('u_name')." will be looking forward to your arrival.</p>";
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('coder30597@gmail.com'); // change it to yours
+        $this->email->to($mailTo);// change it to yours
+        $this->email->subject('Event Invitation');
+        $this->email->message($msg);
+        if ($this->email->send()) {
+            echo "<script>alert('Invitation has been sent.'); window.location='/user/dashboard';</script>";
+        } else {
+            show_error($this->email->print_debugger());
+        }
+
     }
     function logout(){
         $this->session->sess_destroy();

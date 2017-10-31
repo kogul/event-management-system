@@ -268,13 +268,11 @@ hr {
   font-size: 15px;
   width: 100%;
   resize: none;
-  color: white;
+  list-style: none;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   border: 1px solid white;
   outline: none;
-  font: 20px;
   padding: 1%;
-  color: 424242;
 }
 .account_settings{
   padding: 5%;

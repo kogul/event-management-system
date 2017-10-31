@@ -23,7 +23,7 @@
 <body style="background:#F5F5F5;">
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9932;</a>
-    <img class="img_container" src="img_avatar.png">
+    <div style="height:10px;"></div>
     <a href="#" onclick="home()">HOME</a>
     <a href="#" onclick="profile()">PROFILE</a>
 

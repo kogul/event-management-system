@@ -55,7 +55,7 @@
                          <h5 class="eventlocation">Location: <span class="loc"><?php echo $event->location_id ?></span></h5>
                          <h5 class="eventdate">Date & Time : <span class="date"><?php echo $event-> date; ?> </span>-<span class="time"><?php echo $event->e_time; ?></span></h5>
                          <h5 class="eventcontact">Contact: <span class="contact"><?php echo $event->o_phone; ?></span></h5>
-                         <a href="#" class="text" onclick="invokesnack()">Register</a>
+                         <a href="/user/regEvent?eid=<?php echo $event->e_id; ?>" class="text">Register</a>
                          <br>
                          <br>
                      </div>
@@ -63,7 +63,33 @@
              </div>
              <?php }
              } ?>
+             <?php
+             if(!empty($pvtEvents)){
+                 foreach ($pvtEvents as $event){?>
+                     <div class="col-sm-3">
+                         <div class="event1"  id="event1">
+                             <img class="eventimage" src="<?php echo base_url('/application/Assets/Images/').$event->picture; ?>">
+                             <div class="mask">
+                                 <h2 class="eventname"><span><?php echo $event->name; ?></span></h2>
+                                 <hr>
+                                 <h5 class="eventlocation">Location: <span class="loc"><?php echo $event->location_id ?></span></h5>
+                                 <h5 class="eventdate">Date & Time : <span class="date"><?php echo $event-> date; ?> </span>-<span class="time"><?php echo $event->e_time; ?></span></h5>
+                                 <form action="/user/invite">
+                                     <input type="hidden" name="e_id" value="<?php echo $event->e_id; ?>">
+                                     <input type="text" name="email" placeholder="Enter Email" class="col-sm-offset-1 form-control"><br/>
+                                     <input type="submit" class="text" style="border: 0px;" value="Invite">
+                                 </form>
+                                 <br/>
+                                 <a href="/user/delEvent?eid=<?php echo $event->e_id; ?>" class="text">Delete</a>
+                                 <br>
+                                 <br>
+                             </div>
+                         </div>
+                     </div>
+                 <?php }
+             } ?>
          </div>
+
      </div>
 
      <div class="container user_profile " id="user_profile" style="display:none">
@@ -98,10 +124,13 @@
                      <h3 class="text-center" style="font-family: 'Lato', sans-serif;">Your Events</h3>
                      <hr >
                      <ul class="biotext" style="background:white;"  cols="80" rows="6">
-                         <li><a>Event name goes here</a></li>
-                         <li><a>Event name goes here</a></li>
-                         <li><a>Event name goes here</a></li>
-                         <li><a>Event name goes here</a></li>
+                         <?php if(!empty($allPart)){
+                            foreach ($allPart as $event){
+                                ?>
+                         <li><?php echo $event->name." - "; ?><a href="/user/remove?eid=<?php echo $event->e_id; ?>">Unparticipate</a></li>
+                                <?php
+                            }
+                         } ?>
                      </ul>
                  </div>
 
@@ -125,7 +154,7 @@
                      <h3 class="text-center">Public Event</h3>
                      <hr>
                      <form action="/user/create" method="post" enctype="multipart/form-data">
-                         <input type="hidden" name="category" value="private">
+                         <input type="hidden" name="category" value="public">
                      <h4 class="event_input_head ">Event Photo</h4>
                      <input type="file" name="event_pic" class="event_photo" accept="image/*" onchange="readURL(this);" display="inline-block">
                      <img id="blah" class="event_img" src="http://placehold.it/180" alt="your image" />
