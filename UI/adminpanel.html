@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Panel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="adminpanel.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <script src="adminpanel.js"></script>
+</head>
+<body onload="invokesnack()">
+  <nav class="navbar navbar-default" style="color:white">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse shift" id="myNavbar">
+      <ul class="nav navbar-nav">
+      <li><a class="mainheader" id="mainheader" style="color:#7b1fa2;background:white; ">ADMIN PANEL</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li style="cursor:pointer"><a href="adminlogin.html">LOGOUT<i class="fa fa-sign-out"  aria-hidden="true"></i></a></li>
+       </ul>
+     </div>
+   </div>
+ </nav>
+ <div id="snackbar">
+   <h>Welcome Admin!</h>
+  </div>
+  <div class="container">
+  <div class="table-responsive">
+ <table class="table" id="eventtable" style="margin-top:15%;">
+   <thead>
+     <tr>
+       <th></th>
+       <th>Event Name</th>
+       <th>Organizer Name</th>
+       <th>Organizer contact</th>
+       <th>Location</th>
+       <th>Date</th>
+       <th>Time</th>
+       <th>Number of Participants</th>
+       <th>Delete</th>
+       <th><i class="material-icons" onclick="sortlist()">filter_list</i></th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr>
+       <td></td>
+       <td>Florida</td>
+       <td>Pitt</td>
+       <td>9898979897</td>
+       <td>New York</td>
+       <td>13-12-2012</td>
+       <td>8:00</td>
+       <td>60</td>
+       <td><button class="deletebtn btn " onclick="deleteRow(this)">DELETE</button></td>
+    </tr>
+   </tbody>
+   <tbody>
+     <tr>
+       <td></td>
+       <td>Florida</td>
+       <td>Pitt</td>
+       <td>9898979897</td>
+       <td>New York</td>
+       <td>12-12-2012</td>
+       <td>8:00</td>
+       <td>60</td>
+       <td><button  class="deletebtn btn "  onclick="deleteRow(this)">DELETE</button></td>
+    </tr>
+   </tbody>
+   <tbody>
+     <tr>
+       <td></td>
+       <td>Florida</td>
+       <td>Pitt</td>
+       <td>9898979897</td>
+       <td>New York</td>
+       <td>11-12-2012</td>
+       <td>8:00</td>
+       <td>60</td>
+       <td><button  class="deletebtn btn btn-primary" onclick="deleteRow(this)">DELETE</button></td>
+    </tr>
+   </tbody>
+ </table>
+ </div>
+ </div>
+
+
+
+</body>
+</html>

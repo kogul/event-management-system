@@ -1,0 +1,72 @@
+input[type=text], input[type=password] {
+  width: 40%;
+  padding: 12px 20px;
+
+  display: block;
+  border: 1px solid white;
+  border-bottom:1px solid #ccc;
+  box-sizing: border-box;
+  margin-top: 0.5%;
+  margin-bottom: 2%;
+  border-radius: 2%;
+  left: 0px;
+  font-family: 'Lato', sans-serif;
+  margin-left: 2%;
+}
+input[type=text]:focus,input[type=password]:focus{
+    border: 1px solid white;
+  border-bottom:1px solid black;
+  outline: none;
+}
+.inputhead{
+  margin-left: 2%;
+  font-family: 'Lato', sans-serif;
+}
+button {
+    background-color:#00BFA5;
+    color: white;
+    padding: 14px 20px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: none;
+    cursor: pointer;
+    width: 13%;
+    margin-left: 2%;
+    border-radius: 5px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    margin-left: 30%;
+
+
+}
+
+img.avatar {
+    width: 50%;
+    margin-top: 7%;
+
+
+}
+.container{
+  margin-top: 3%;
+}
+.loginform{
+border-radius: 1em;
+margin-left: 30%;
+margin-right: 30%;
+margin-top: 10%;
+
+}
+body{
+  background-image: url("sayagata-400px.png");
+}

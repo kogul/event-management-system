@@ -218,33 +218,47 @@
       <div class="row">
         <div class="col-sm-4 profile">
           <div class="profile_picture">
-            <img src="img_avatar.png"><span class="user_name"><h class="nametag">Jane Doe</h><i class="fa fa-pencil-square-o icon1" style="font-size:20px;" aria-hidden="true"></i></span>
+            <i class="material-icons edit" onclick="changeprofile()" >edit</i>
+            <img src="img_avatar.png"> <span class="user_name"><input class="nametag" style="padding:3%;outline:none;resize:none;border:1px #F44336 ;" value="Jane Doe" id="nametag" readonly></span>
           </div>
           <div class="user_details">
             <div class="user_ph">
-              <h4 class="desc" style="font-family: 'Lato', sans-serif;">Phone No:</h4>
-              <span><textarea rows=1 class="number" style="outline:none;resize:none;border:1px solid white;">9944580867</textarea><i class="fa fa-pencil-square-o icon1" id="icon_ph" onclick="ph_change()" style="font-size:20px;" aria-hidden="true"></i><i class="fa fa-plus icon2"  style="font-size:20px;" aria-hidden="true"></i></span>
+              <h4 class="desc" style="font-family: 'Lato', sans-serif;">Primary Phone No:</h4>
+              <input class="number" id="phnumber" value="9944580867" style="outline:none;resize:none;border:1px solid white;" readonly>
+              <br>
+
+              <h4 class="desc" style="font-family: 'Lato', sans-serif;">Secondary Phone No:</h4>
+              <input class="number" id="secphnumber" value="9299292992" style="outline:none;resize:none;border:1px solid white;" readonly>
             </div>
 
            <div class="user_ph">
-            <h4 class="desc" style="font-family: 'Lato', sans-serif;" style="padding-bottom:1%;">Email Id:</h4>
-            <span><h style="padding:3%;" class="number">janedoe@eventivation.com</h><span>
+            <h4 class="desc" style="font-family: 'Lato', sans-serif;" style="padding-bottom:1%;" >Email Id:</h4>
+            <span id="emailtext"><input style="padding:3%;outline:none;resize:none;border:1px #EEEEEE ;" value="janedoe@eventivation.com"  class="email number" readonly><span>
            </div>
-          <br>
+
 
            <div class="user_addr" style="font-family: 'Lato', sans-serif;">
             <h4 class="desc">Address:</h4>
-            <textarea class="addr" cols=5 rows=3 style="outline:none;resize:none;border:1px solid white;">No 24, KTVR Gardens,Ganapathy,Coimbatore</textarea><span><i class="fa fa-pencil-square-o icon1" style="font-size:20px;" aria-hidden="true"></i></span>
+            <span><input class="addr" id="addr" value="Address goes here"  style="outline:none;resize:none;border:1px solid #EEEEEE;" readonly>
+            </span>
+
            </div>
+
+            <button class="btn btn-primary profilesubmit" id="profilesubmit" onclick="profilesubmit()" style="display:none" type="submit">Submit</button>
          </div>
         </div>
         <div class="col-sm-8">
           <div class="row">
            <div class="col-sm-12">
            <div class="bio">
-            <h3 class="text-center" style="font-family: 'Lato', sans-serif;">Bio</h3>
-             <hr >
-             <textarea class="biotext"  cols="80" rows="4"></textarea>
+            <h3 class="text-center" style="font-family: 'Lato', sans-serif;">Change Password</h3>
+             <hr>
+             <input type="password" placeholder="Old Password" name="psw" id="input11" required>
+             <br>
+             <input type="password" placeholder="New Password" name="psw" id="input11" required>
+             <br>
+             <input type="password" placeholder="Confirm Password" name="psw" id="input12" required>
+             <button class="btn btn-primary profilesubmit" id="profilesubmit"   type="submit">Submit</button>
             </div>
           </div>
 
@@ -256,7 +270,7 @@
           <li><a>Event name goes here</a></li>
           <li><a>Event name goes here</a></li>
           <li><a>Event name goes here</a></li>
-          <li><a>Event name goes here</a></li> 
+          <li><a>Event name goes here</a></li>
           </ul>
          </div>
 

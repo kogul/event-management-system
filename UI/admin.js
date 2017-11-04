@@ -60,3 +60,17 @@ function invokesnack() {
     x.className = "show";
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
+function changeprofile(){
+   document.getElementById("nametag").readOnly=false;
+   document.getElementById("phnumber").readOnly=false;
+   document.getElementById("secphnumber").readOnly=false;
+   document.getElementById("addr").readOnly=false;
+   document.getElementById("profilesubmit").style.display="block";
+}
+function profilesubmit(){
+  document.getElementById("nametag").readOnly=true;
+  document.getElementById("phnumber").readOnly=true;
+  document.getElementById("secphnumber").readOnly=true;
+  document.getElementById("addr").readOnly=true;
+  document.getElementById("profilesubmit").style.display="none";
+}
