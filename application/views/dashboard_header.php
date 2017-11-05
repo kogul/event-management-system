@@ -28,6 +28,5 @@
     <a href="#" onclick="profile()">PROFILE</a>
 
     <a href="#" onclick="create_event()">CREATE EVENT</a>
-    <a href="#">CONTACT</a>
     <a href="/user/logout">LOG OUT</a>
 </div>

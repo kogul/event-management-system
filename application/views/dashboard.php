@@ -12,8 +12,6 @@
                      <li><a class="mainheader" id="mainheader" style="margin-left:10px;color:#7b1fa2 ">DASHBOARD</a></li>
                  </ul>
                  <ul class="navbar-right nav navbar-nav">
-                     <li><a><i class="material-icons" id="bookmarks">chat</i></a></li>
-                     <li><a class="notify" id="notify"><div class="icon material-icons mdl-badge" data-badge="♥">notifications</div></a></li>
                      <!-- <div class="chip dropdown-toggle" data-toggle="dropdown">
                       <img src="img_avatar.png" alt="Person" width="90" height="96">
                       John Doe -->
@@ -22,8 +20,8 @@
                              </button>
                              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 
-                                 <li role="presentation"><a role="menuitem" onclick="private()" tabindex="-1" href="#">Account Settings</a></li>
-                                 <li role="presentation"><a role="menuitem" onclick="public()" tabindex="-1" href="#">Change Password</a></li>
+                                 <li role="presentation"><a role="menuitem" onclick="profile()" tabindex="-1" href="#">Account Settings</a></li>
+                                 <li role="presentation"><a role="menuitem" onclick="profile()" tabindex="-1" href="#">Change Password</a></li>
                                  <li role="presentation"><a role="menuitem" onclick="private()" tabindex="-1" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=kogul.karna@gmail.com&su=&body=&bcc=&tf=1" target="_blank">Report Issues</a></li>
 
 

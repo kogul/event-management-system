@@ -38,7 +38,6 @@
             <tbody>
             <?php foreach ($events as $event){ ?>
             <tr>
-                <td></td>
                 <td><?php echo $event['name']; ?></td>
                 <td><?php echo $event['o_name']; ?></td>
                 <td><?php echo $event['o_phone']; ?></td>
