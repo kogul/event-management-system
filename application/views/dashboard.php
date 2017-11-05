@@ -160,7 +160,7 @@
                          <?php if(!empty($allPart)){
                             foreach ($allPart as $event){
                                 ?>
-                         <li><?php echo $event->name." - "; ?><a href="/user/remove?eid=<?php echo $event->e_id; ?>">Unparticipate</a></li>
+                         <li><?php echo $event->name.": Rs.".$event->bill." - "; ?><a href="/user/remove?eid=<?php echo $event->e_id; ?>">Unparticipate</a></li>
                                 <?php
                             }
                          } ?>

@@ -24,7 +24,6 @@
         <table class="table" id="eventtable" style="margin-top:15%;">
             <thead>
             <tr>
-                <th></th>
                 <th>Event Name</th>
                 <th>Organizer Name</th>
                 <th>Organizer contact</th>

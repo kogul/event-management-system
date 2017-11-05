@@ -8,3 +8,6 @@ function deleteRow(r) {
     document.getElementById("eventtable").deleteRow(i);
 
 }
+$(document).ready(function(){
+    $('#eventtable').DataTable();
+});
