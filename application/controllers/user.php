@@ -42,6 +42,9 @@ class user extends CI_Controller{
         }
     }
     function dashboard(){
+        if(empty($this->session->userdata('u_id'))){
+            header("Location: /user/index");
+        }
         $this->load->model('users');
         $this->load->model('events');
         $allPart = $this->events->allPart($this->session->userdata('u_id'));
@@ -126,7 +129,28 @@ class user extends CI_Controller{
                          'u_id' => $udata['u_id']
                          ));
                      $this->session->set_userdata($udata);
-                     header('Location: /user/dashboard');
+                      $config = Array(
+                          'protocol' => 'smtp',
+                          'smtp_host' => 'ssl://smtp.googlemail.com',
+                          'smtp_port' => 465,
+                          'smtp_user' => 'coder30597@gmail.com', // change it to yours
+                          'smtp_pass' => 'swagmeansitsme', // change it to yours
+                          'mailtype' => 'html',
+                          'charset' => 'iso-8859-1',
+                          'wordwrap' => TRUE
+                      );
+                      $msg ="";
+                      $this->load->library('email', $config);
+                      $this->email->set_newline("\r\n");
+                      $this->email->from('coder30597@gmail.com'); // change it to yours
+                      $this->email->to($u_email);// change it to yours
+                      $this->email->subject('Thanks for Registering with us');
+                      $this->email->message($msg);
+                      if ($this->email->send()) {
+                          header('Location: /user/dashboard');
+                      } else {
+                          show_error($this->email->print_debugger());
+                      }
                   }else{
                       $msg = "Phone Number should only be numbers";
                   }
@@ -179,7 +203,29 @@ class user extends CI_Controller{
             $data['locations'] = $this->users->getlocation();
             $this->load->view('dashboard_header');
             $this->load->view('dashboard',$data);
-            echo "<script>alert('Registered Successfully');</script>";
+            $this->load->helper('string');
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'coder30597@gmail.com', // change it to yours
+                'smtp_pass' => 'swagmeansitsme', // change it to yours
+                'mailtype' => 'html',
+                'charset' => 'iso-8859-1',
+                'wordwrap' => TRUE
+            );
+            $msg = "You have successfully registered ".$event['name'].". Your registration ID is ".random_string('alnum', 16);
+            $this->load->library('email', $config);
+            $this->email->set_newline("\r\n");
+            $this->email->from('coder30597@gmail.com'); // change it to yours
+            $this->email->to($this->session->userdata('email'));// change it to yours
+            $this->email->subject('Event Registration');
+            $this->email->message($msg);
+            if ($this->email->send()) {
+                echo "<script>alert('Registered Successfully.'); window.location='/user/dashboard';</script>";
+            } else {
+                show_error($this->email->print_debugger());
+            }
         }else{
             $allPart = $this->events->allPart($this->session->userdata('u_id'));
             $data['allPart'] = $allPart;
@@ -278,7 +324,42 @@ class user extends CI_Controller{
        }
     }
     function forgotPassword(){
-
+       $this->load->view('forgotpw-header');
+       $this->load->view('forgotpw');
+    }
+    function resetPass(){
+        $this->load->model('users');
+        $mail = $this->input->post('umail');
+        $udata = $this->users->fetch($mail);
+        if(empty($udata)){
+            echo "<script>confirm('Your have not registered yet');
+                     window.location = '/user/';
+                     </script>";
+        }else{
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'coder30597@gmail.com', // change it to yours
+                'smtp_pass' => 'swagmeansitsme', // change it to yours
+                'mailtype' => 'html',
+                'charset' => 'iso-8859-1',
+                'wordwrap' => TRUE
+            );
+            $msg = "<p>Hey ".$udata['u_name'].",</p><p>Your password is ".$udata['u_pass']."</p><p>Do change your password once after you login. If you didn't request for password, Please let us know.</p>";
+            $this->load->library('email', $config);
+            $this->email->set_newline("\r\n");
+            $this->email->from('coder30597@gmail.com'); // change it to yours
+            $this->email->to($mail);// change it to yours
+            $this->email->subject('Request for Password');
+            $this->email->message($msg);
+            if ($this->email->send()) {
+                echo "<script>alert('Please check your email'); window.location='/user/dashboard';</script>";
+            } else {
+                show_error($this->email->print_debugger());
+            }
+        }
+        echo json_encode($udata);
     }
     function logout(){
         $this->session->sess_destroy();

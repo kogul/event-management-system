@@ -2,7 +2,7 @@
     <img class="logoimg " src="<?php  echo base_url().'application/assets/images/t2.png';?>">
 </div>
 
-<div class="aboutus">
+<div id="aboutus" class="aboutus">
     <h class="abouthead text-centre" >About Us</h>
     <div class="aboutcontent"><p>We are an experienced team of Event Management Specialists who know how to plan,
             promote and run an event that will achieve your goal.

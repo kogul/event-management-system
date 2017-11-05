@@ -15,7 +15,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#myPage">HOME</a></li>
                 <li><a href="#aboutus">ABOUT US</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#ourteam">Contact</a></li>
                 <li><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</a></li>
             </ul>
         </div>

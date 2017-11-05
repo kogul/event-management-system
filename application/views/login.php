@@ -19,7 +19,7 @@
             <button  class="loginbtn">Sign In</button>
             <span><div  class="signupbtn" style="background-color:#e53935" onclick="openresponce()">Sign up</div></span>
 
-            <span class="psw">Forgot <a href="#">password?</a></span>
+            <span class="psw">Forgot <a href="/user/forgotPassword">password?</a></span>
         </div>
     </form>
 </div>
