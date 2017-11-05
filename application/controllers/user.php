@@ -65,7 +65,6 @@ class user extends CI_Controller{
            $location = $this->input->post('location',true);
            $category = $this->input->post('category');
             $time = $this->input->post('event_time',true);
-            $max_part = $this->input->post('max_acc',true);
             $phone = $this->input->post('o_phone',true);
             $entry_fee = $this->input->post('entry_fee',true);
             $org_id = $this->users->orgData($this->session->userdata('u_id'));
@@ -79,7 +78,6 @@ class user extends CI_Controller{
                'category' => $category,
                'date' => $date,
                'e_time'=>$time,
-               'max_partic'=>$max_part,
                'o_id'=>$org_id['o_id'],
                'fees'=>$entry_fee,
                'o_phone'=>$phone
@@ -239,6 +237,47 @@ class user extends CI_Controller{
         } else {
             show_error($this->email->print_debugger());
         }
+
+    }
+    function addPhone(){
+        $this->load->model('users');
+        $zip = $this->input->post('p_code');
+        $phnum = $this->input->post('phnum');
+        $this->users->insertPhone(array('code'=>$zip,
+            'number' => $phnum,
+            'u_id' => $this->session->userdata('u_id')
+        ));
+        header("Location: /user/dashboard");
+
+    }
+    function changePassword(){
+        $this->load->model('users');
+       $opass = $this->input->post('opsw',true);
+       $npass = $this->input->post('npsw',true);
+       $cpass = $this->input->post('cpsw',true);
+     if($npass !== $cpass){
+           echo "<script>confirm('Passwords does not match');
+             window.location = '/user/dashboard';
+           </script>";
+
+       }else {
+           if ($opass !== $this->session->userdata('u_pass')) {
+               echo "<script>confirm('Your current password is incorrect');
+                     window.location = '/user/dashboard';
+                     </script>";
+           }else{
+               $npass = array(
+                   'u_pass' => $cpass
+               );
+               $this->users->updatePass($this->session->userdata('u_id'),$npass);
+               $_SESSION['u_pass'] = $cpass;
+               echo "<script>confirm('Your password has been updated');
+              window.location = '/user/dashboard';
+               </script>";
+           }
+       }
+    }
+    function forgotPassword(){
 
     }
     function logout(){

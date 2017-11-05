@@ -24,7 +24,7 @@
 
                                  <li role="presentation"><a role="menuitem" onclick="private()" tabindex="-1" href="#">Account Settings</a></li>
                                  <li role="presentation"><a role="menuitem" onclick="public()" tabindex="-1" href="#">Change Password</a></li>
-                                 <li role="presentation"><a role="menuitem" onclick="private()" tabindex="-1" href="#">Report Issues</a></li>
+                                 <li role="presentation"><a role="menuitem" onclick="private()" tabindex="-1" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=kogul.karna@gmail.com&su=&body=&bcc=&tf=1" target="_blank">Report Issues</a></li>
 
 
                              </ul>
@@ -97,7 +97,7 @@
          <div class="row">
              <div class="col-sm-4 profile">
                  <div class="profile_picture">
-                     <img src="img_avatar.png"><span class="user_name"><h class="nametag"><?php echo $udata['u_name']; ?></h><i class="fa fa-pencil-square-o icon1" style="font-size:20px;" aria-hidden="true"></i></span>
+                    <span class="user_name"><h class="nametag"><?php echo $udata['u_name']; ?></h><i class="fa fa-pencil-square-o icon1" style="font-size:20px;" aria-hidden="true"></i></span>
                  </div>
                  <div class="user_details">
                      <div class="user_ph">
@@ -118,8 +118,41 @@
                          <textarea class="addr" cols=5 rows=3 style="outline:none;resize:none;border:1px solid white;"><?php echo $udata['city'].','.$udata['state'].','.$udata['zipcode'] ; ?></textarea><span><i class="fa fa-pencil-square-o icon1" style="font-size:20px;" aria-hidden="true"></i></span>
                      </div>
                  </div>
+                 <div class="row">
+                     <div class="col-sm-12">
+                         <div class="bio">
+                             <h3 class="text-center" style="font-family: 'Lato', sans-serif;">Add Phone</h3>
+                             <hr>
+                             <form method="post" action="/user/addPhone">
+                                 <input type="text" placeholder="Code" class="form-control" name="p_code" id="input11" required>
+                                 <input type="text" placeholder="Phone No." class="form-control" name="phnum" id="input11" required>
+                                 <br>
+                                 <input class="btn btn-primary profilesubmit" id="profilesubmit"   type="submit">
+                             </form>
+                         </div>
+                     </div>
+
+                 </div>
              </div>
+
              <div class="col-sm-7">
+                 <div class="row">
+                     <div class="col-sm-12">
+                         <div class="bio">
+                             <h3 class="text-center" style="font-family: 'Lato', sans-serif;">Change Password</h3>
+                             <hr>
+                             <form method="post" action="/user/changePassword">
+                             <input type="password" placeholder="Old Password" name="opsw" id="input11" required>
+                             <br>
+                             <input type="password" placeholder="New Password" name="npsw" id="input11" required>
+                             <br>
+                             <input type="password" placeholder="Confirm Password" name="cpsw" id="input12" required>
+                             <input class="btn btn-primary profilesubmit" id="profilesubmit"   type="submit">
+                             </form>
+                         </div>
+                     </div>
+
+                 </div>
                  <div class="bio">
                      <h3 class="text-center" style="font-family: 'Lato', sans-serif;">Your Events</h3>
                      <hr >
@@ -138,6 +171,7 @@
              </div>
          </div>
      </div>
+
 
      <div class="create_event" id="create_event" style="display:none;">
          <div class="container ">
@@ -173,8 +207,6 @@
                              }
                              ?>
                          </select>
-                     <h4 class="event_input_head">Maximum Accomodation</h4>
-                     <input type="text" name="max_acc">
                          <h4 class="event_input_head">Official Contact</h4>
                          <input type="text" name="o_phone">
                      <h4 class="event_input_head">Ticket Price </h4>
@@ -209,8 +241,6 @@
                              }
                              ?>
                          </select>
-                     <h4 class="event_input_head">Maximum Accomodation</h4>
-                     <input type="text" name="max_acc">
                          <h4 class="event_input_head">Official Contact</h4>
                          <input type="text" name="o_phone">
                      <h4 class="event_input_head">Ticket Price </h4>

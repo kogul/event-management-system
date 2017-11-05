@@ -40,4 +40,8 @@ class users extends CI_Model{
         $res = $this->db->get('Organiser');
         return $res->row_array();
     }
+    function updatePass($uid,$pass){
+        $this->db->where('u_id',$uid);
+        $this->db->update('User',$pass);
+    }
 }
