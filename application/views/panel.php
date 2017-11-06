@@ -32,12 +32,12 @@
                 <th>Time</th>
                 <th>Number of Participants</th>
                 <th>Delete</th>
-                <th><i class="material-icons" onclick="sortlist()">filter_list</i></th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($events as $event){ ?>
             <tr>
+
                 <td><?php echo $event['name']; ?></td>
                 <td><?php echo $event['o_name']; ?></td>
                 <td><?php echo $event['o_phone']; ?></td>
