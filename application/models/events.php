@@ -52,4 +52,10 @@ class events extends CI_Model{
         $this->db->where('e_id',$e_id);
         $this->db->delete('Event');
     }
+    function verifyPart($reg_id){
+        $this->db->select('*');
+        $this->db->where('reg_id',$reg_id);
+        $res = $this->db->get('Participant');
+        return $res->row_array();
+    }
 }

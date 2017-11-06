@@ -181,16 +181,19 @@ class user extends CI_Controller{
     function regEvent(){
         $this->load->model('users');
         $this->load->model('events');
+        $this->load->helper('string');
         $e_id =  $this->input->get('eid');
         $u_id = $this->session->userdata('u_id');
         $check = $this->events->fetchPart($e_id,$u_id);
+        $booking_id = random_string('alnum', 16);
         if(empty($check)) {
             $event = $this->events->fetchEvent($e_id);
             $data = array(
                 'name' => $event['name'],
                 'bill' => $event['fees'],
                 'u_id' => $u_id,
-                'e_id' => $e_id
+                'e_id' => $e_id,
+                'reg_id' => $booking_id
             );
             $this->events->insertPart($data);
             $allPart = $this->events->allPart($this->session->userdata('u_id'));
@@ -203,7 +206,6 @@ class user extends CI_Controller{
             $data['locations'] = $this->users->getlocation();
             $this->load->view('dashboard_header');
             $this->load->view('dashboard',$data);
-            $this->load->helper('string');
             $config = Array(
                 'protocol' => 'smtp',
                 'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -214,7 +216,7 @@ class user extends CI_Controller{
                 'charset' => 'iso-8859-1',
                 'wordwrap' => TRUE
             );
-            $msg = "You have successfully registered ".$event['name'].". Your registration ID is ".random_string('alnum', 16);
+            $msg = "You have successfully registered ".$event['name'].". Your registration ID is ".$booking_id;
             $this->load->library('email', $config);
             $this->email->set_newline("\r\n");
             $this->email->from('coder30597@gmail.com'); // change it to yours
@@ -364,5 +366,24 @@ class user extends CI_Controller{
     function logout(){
         $this->session->sess_destroy();
         header('Location: /user/index');
+    }
+    function verify(){
+
+        $this->load->view('forgotpw-header');
+        $this->load->view('verify-reg');
+    }
+    function verifyId(){
+        $this->load->model('events');
+        $reg_id = $this->input->post('reg_id');
+        $check = $this->events->verifyPart($reg_id);
+        if(!empty($check)){
+            echo "<script>alert('Verified')</script>";
+            $this->load->view('forgotpw-header');
+            $this->load->view('verify-reg');
+        }else{
+            echo "<script>alert('The user has not registered')</script>";
+            $this->load->view('forgotpw-header');
+            $this->load->view('verify-reg');
+        }
     }
 }
